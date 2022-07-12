@@ -1,0 +1,65 @@
+{
+  "config": {
+    "wide_screen_mode": true
+  },
+  "header": {
+    "template": "blue",
+    "title": {
+      "content": "Drone CI Notification",
+      "tag": "plain_text"
+    }
+  },
+  "elements": [
+    {
+      "tag": "markdown",
+      "content": "**Game/Game-Web-Frontent**"
+    },
+    {
+      "tag": "hr"
+    },
+    {
+      "tag": "markdown",
+      "content": "*dev分支*\n**提交者：** *keepchen*"
+    },
+    {
+      "tag": "img",
+      "title": {
+        "tag": "lark_md",
+        "content": ""
+      },
+      "img_key": "img_v2_e38b7ff9-2d11-467f-80c1-4c40fca7afag",
+      "alt": {
+        "tag": "plain_text",
+        "content": "failure"
+      }
+    },
+    {
+      "tag": "markdown",
+      "content": "**Commit信息**：*Merge branch 'pre-preview' into 'preview' 合并代码到preview See merge request game/game-web-frontent!569*"
+    },
+    {
+      "tag": "hr"
+    },
+    {
+      "tag": "markdown",
+      "content": "[查看Commit信息](https://www.baidu.com) | [查看构建信息](https://www.baidu.com)"
+    },
+    {
+      "tag": "note",
+      "elements": [
+        {
+          "tag": "plain_text",
+          "content": "Powered By"
+        },
+        {
+          "tag": "img",
+          "img_key": "img_v2_1276726d-d435-4f52-b042-a76093814d1g",
+          "alt": {
+            "tag": "plain_text",
+            "content": "keepchen"
+          }
+        }
+      ]
+    }
+  ]
+}
