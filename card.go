@@ -42,9 +42,9 @@ type CardHeader struct {
 }
 
 type Card struct {
-	Config    CardConfig     `json:"config"`
-	Header    CardHeader     `json:"header"`
-	Elements  []*CardElement `json:"elements,omitempty"`
+	Config   CardConfig     `json:"config"`
+	Header   CardHeader     `json:"header"`
+	Elements []*CardElement `json:"elements,omitempty"`
 }
 
 // Build 组装卡片信息
@@ -144,15 +144,19 @@ func (Card) Build(repo, branch, author, status, commitMsg, repoUrl, droneUrl str
 		})
 	}
 
+	//debug multiple lines commit message
+//	commitMsg = `
+//Merge branch 'branch1' into 'main'
+//
+//feat:1.do something，2.another...
+//
+//See merge request game/game-web-frontend!478
+//`
+
 	{
-		// replace `\n` to ""
-		if strings.HasPrefix(commitMsg, "\n") || strings.HasSuffix(commitMsg, "\n"){
-			commitMsg = strings.TrimPrefix(commitMsg, "\n")
-			commitMsg = strings.TrimSuffix(commitMsg, "\n")
-		}
 		var (
 			tag     = "markdown"
-			content = fmt.Sprintf("**Commit信息：** *%s*", commitMsg)
+			content = fmt.Sprintf("**Commit信息：**  \n%s", handleMultipleLinesCommitMsg(commitMsg))
 		)
 		card.Elements = append(card.Elements, &CardElement{
 			Tag:     &tag,
@@ -211,4 +215,18 @@ func (Card) Build(repo, branch, author, status, commitMsg, repoUrl, droneUrl str
 	}
 
 	return card
+}
+
+// handle multiple lines commit message and return markdown string
+func handleMultipleLinesCommitMsg(commitMsg string) string {
+	commitMsgLines := strings.Split(commitMsg, "\n")
+	var markdownHolders = make([]string, 1)
+	for _, line := range commitMsgLines {
+		if len(strings.Trim(line, "")) == 0 {
+			continue
+		}
+		markdownHolders = append(markdownHolders, fmt.Sprintf("*%s*", line))
+	}
+
+	return strings.Join(markdownHolders, "\n")
 }
