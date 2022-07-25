@@ -10,7 +10,7 @@ type DroneEnvironment struct {
 	DroneRepoNamespace string //git仓库所属分组
 	DroneRepoName      string //git仓库名称
 	DroneRepo          string //git仓库名称，等价于 DroneRepoNamespace + "/" + DroneRepoName
-	DroneRepoBranch    string //构建分支
+	DroneBranch        string //构建分支
 	DroneCommitSha     string //git提交hash摘要值
 	DroneCommitMessage string //git提交备注信息
 	DroneCommitLink    string //git提交信息网页地址
@@ -43,7 +43,7 @@ func (droneEnv DroneEnvironment) GetEnv() DroneEnvironment {
 	droneEnv.DroneRepoNamespace = os.Getenv("DRONE_REPO_NAMESPACE")
 	droneEnv.DroneRepoName = os.Getenv("DRONE_REPO_NAME")
 	droneEnv.DroneRepo = os.Getenv("DRONE_REPO")
-	droneEnv.DroneRepoBranch = os.Getenv("DRONE_REPO_BRANCH")
+	droneEnv.DroneBranch = os.Getenv("DRONE_BRANCH")
 	droneEnv.DroneCommitSha = os.Getenv("DRONE_COMMIT_SHA")
 	droneEnv.DroneCommitMessage = os.Getenv("DRONE_COMMIT_MESSAGE")
 	droneEnv.DroneCommitLink = os.Getenv("DRONE_COMMIT_LINK")

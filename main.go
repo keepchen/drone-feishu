@@ -16,7 +16,7 @@ func main() {
 		droneEnv = (DroneEnvironment{}).GetEnv()
 		payload  Payload
 	)
-	card := (Card{}).Build(droneEnv.DroneRepo, droneEnv.DroneRepoBranch, droneEnv.DroneCommitAuthor,
+	card := (Card{}).Build(droneEnv.DroneRepo, droneEnv.DroneBranch, droneEnv.DroneCommitAuthor,
 		droneEnv.DroneBuildStatus, droneEnv.DroneCommitMessage, droneEnv.DroneCommitLink, droneEnv.DroneBuildLink,
 		droneEnv.PluginCardTitle, droneEnv.PluginSuccessImgKey, droneEnv.PluginFailureImgKey,
 		droneEnv.PluginPoweredByImgKey, droneEnv.PluginPoweredByImgAlt)
